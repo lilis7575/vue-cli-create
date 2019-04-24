@@ -1,26 +1,25 @@
 <template>
-  <div>
-    <h1>{{ title }}</h1>
-    <p>{{ count }}</p>
-    <button @click="count ++">추가</button>
-
-    <HomeComponent/>
-    <AppStatus/>
-  </div>
+  <v-container>
+    <v-layout>
+      <v-flex xs12>
+        <User/>
+      </v-flex>
+    </v-layout>
+  </v-container>
+  <!-- <v-app>
+    <v-content>
+      <User/>
+    </v-content>
+  </v-app>-->
 </template>
 
 <script>
-import HomeComponent from "@/Home";
+import User from "./components/User";
 
 export default {
-  data() {
-    return {
-      title: "안녕하세요.",
-      count: 1
-    };
-  },
+  name: "App",
   components: {
-    HomeComponent
+    User
   }
 };
 </script>
