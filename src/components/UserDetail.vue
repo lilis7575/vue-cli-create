@@ -19,20 +19,35 @@
         <v-list-tile-content>반려견:</v-list-tile-content>
         <v-list-tile-content class="align-end">{{ hasDogKr }}</v-list-tile-content>
       </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>수정일자:</v-list-tile-content>
+        <v-list-tile-content class="align-end">{{ editedDate }}</v-list-tile-content>
+      </v-list-tile>
     </v-list>
   </div>
 </template>
 
 <script>
+import { eventBus } from "../main";
+
 export default {
   props: ["name", "address", "phone", "hasDog"],
   data() {
-    return {};
+    return {
+      editedDate: null
+    };
   },
   computed: {
     hasDogKr() {
       return this.hasDog ? "있음" : "없음";
     }
+  },
+  created() {
+    console.log("322");
+    eventBus.$on("userWasEdited", date => {
+      console.log("333");
+      this.editedDate = date;
+    });
   }
 };
 </script>
