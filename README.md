@@ -1,4 +1,12 @@
-# vue-cli-create
+# Vue CLI 3.0 시작하기
+맨땅에 개발하기 스터디.
+
+[유투브](https://www.youtube.com/watch?v=G6rhxMuqnhU&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG)
+
+------
+
+
+## vue-cli-create
 
 ## Project setup
 ```
@@ -27,3 +35,4 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+

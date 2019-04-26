@@ -44,6 +44,7 @@ export default {
     }
   },
   created() {
+    console.log("userdetail.vue");
     eventBus.$on("userWasEdited", date => {
       this.editedDate = date;
     });

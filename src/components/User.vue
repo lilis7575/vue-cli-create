@@ -3,6 +3,7 @@
     <h1>User 컴포넌트</h1>
     <p>이름: {{ name }}</p>
     <p>{{ getDateAndTime(createAt) }}</p>
+    <p>{{ helloToMixin }}</p>
     <v-btn @click="changeName()">이름변경</v-btn>
     <hr>
     <v-layout row wrap>
@@ -36,7 +37,13 @@ export default {
     UserEdit
   },
   created() {
+    console.log("user.vue");
     this.createAt = new Date();
+  },
+  computed: {
+    helloToMixin() {
+      return this.mixinData + " => 안녕하세요~~";
+    }
   },
   methods: {
     changeName() {
@@ -47,20 +54,20 @@ export default {
       this.address = obj.address;
       this.phone = obj.phone;
       this.hasDog = obj.hasDog;
-    }
-    // ,
-    // getDateAndTime(date) {
-    //   if (date != null) {
-    //     let hour = date.getHours();
-    //     let minutes = date.getMinutes();
-    //     let fullDate = `${date.getFullYear()}/${date.getMonth() +
-    //       1}/${date.getDate()}`;
+    },
+    getDateAndTime(date) {
+      // mixin 에 있는 함수보다 로컬 함수가 우선 수행된다.
+      if (date != null) {
+        let hour = date.getHours();
+        let minutes = date.getMinutes();
+        let fullDate = `${date.getFullYear()}/${date.getMonth() +
+          1}/${date.getDate()}`;
 
-    //     return `${fullDate} ${hour}:${minutes} `;
-    //   } else {
-    //     return null;
-    //   }
-    // }
+        return `${hour}:${minutes} ${fullDate} `;
+      } else {
+        return null;
+      }
+    }
   },
   mixins: [dateFormat]
 };
