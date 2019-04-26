@@ -21,7 +21,7 @@
       </v-list-tile>
       <v-list-tile>
         <v-list-tile-content>수정일자:</v-list-tile-content>
-        <v-list-tile-content class="align-end">{{ editedDate }}</v-list-tile-content>
+        <v-list-tile-content class="align-end">{{ getDateAndTime(editedDate) }}</v-list-tile-content>
       </v-list-tile>
     </v-list>
   </div>
@@ -29,6 +29,7 @@
 
 <script>
 import { eventBus } from "../main";
+import { dateFormat } from "../mixins/dateFormat";
 
 export default {
   props: ["name", "address", "phone", "hasDog"],
@@ -43,11 +44,23 @@ export default {
     }
   },
   created() {
-    console.log("322");
     eventBus.$on("userWasEdited", date => {
-      console.log("333");
       this.editedDate = date;
     });
-  }
+  },
+  methods: {
+    // getDateAndTime(date) {
+    //   if (date != null) {
+    //     let hour = date.getHours();
+    //     let minutes = date.getMinutes();
+    //     let fullDate = `${date.getFullYear()}/${date.getMonth() +
+    //       1}/${date.getDate()}`;
+    //     return `${fullDate} ${hour}:${minutes} `;
+    //   } else {
+    //     return null;
+    //   }
+    // }
+  },
+  mixins: [dateFormat]
 };
 </script>

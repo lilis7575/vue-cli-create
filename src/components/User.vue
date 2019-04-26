@@ -2,6 +2,7 @@
   <div class="blue lighten-3 pa-3">
     <h1>User 컴포넌트</h1>
     <p>이름: {{ name }}</p>
+    <p>{{ getDateAndTime(createAt) }}</p>
     <v-btn @click="changeName()">이름변경</v-btn>
     <hr>
     <v-layout row wrap>
@@ -18,6 +19,7 @@
 <script>
 import UserDetail from "./UserDetail.vue";
 import UserEdit from "./UserEdit.vue";
+import { dateFormat } from "../mixins/dateFormat";
 
 export default {
   data() {
@@ -25,12 +27,16 @@ export default {
       name: "Vue JS",
       address: "korea",
       phone: "010-1111-2222",
-      hasDog: true
+      hasDog: true,
+      createAt: null
     };
   },
   components: {
     UserDetail,
     UserEdit
+  },
+  created() {
+    this.createAt = new Date();
   },
   methods: {
     changeName() {
@@ -42,6 +48,20 @@ export default {
       this.phone = obj.phone;
       this.hasDog = obj.hasDog;
     }
-  }
+    // ,
+    // getDateAndTime(date) {
+    //   if (date != null) {
+    //     let hour = date.getHours();
+    //     let minutes = date.getMinutes();
+    //     let fullDate = `${date.getFullYear()}/${date.getMonth() +
+    //       1}/${date.getDate()}`;
+
+    //     return `${fullDate} ${hour}:${minutes} `;
+    //   } else {
+    //     return null;
+    //   }
+    // }
+  },
+  mixins: [dateFormat]
 };
 </script>

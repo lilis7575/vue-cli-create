@@ -24,7 +24,7 @@ export default {
     save() {
       this.$emit("child", this.user, 1, 2, 3, 4);
       // eventBus.$emit("userWasEdited", new Date());
-      eventBus.userWasEdited(new Date())
+      eventBus.userWasEdited(new Date());
     }
   },
   created() {
